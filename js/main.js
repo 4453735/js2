@@ -19,4 +19,5 @@ const renderProducts = list => {
     document.querySelector('.products').insertAdjacentHTML('beforeend', list.map(item => renderProduct(item, item.img)).join(''));
 };
 
+
 renderProducts(products);
