@@ -49,6 +49,7 @@ class ProductList {
     console.log(`Суммарная стоимость всех товаров: ${sum} руб.`);
   }
 
+  // Решение взял с объяснения ДЗ
   calcSum() {
     return this.allProducts.reduce((sum, {price}) => sum + price, 0)
   }
