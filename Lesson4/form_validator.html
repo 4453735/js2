@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .formBlock {
+        margin: 200px auto;
+        width: 200px;
+    }
+    .formInput {
+        width: 200px;
+    }
+
+    .error {
+        outline: 2px solid crimson;
+    }
+
+    .green {
+        outline: 2px solid green;
+    }
+
+    .btn {
+        margin: 20px auto;
+        display: block;
+    }
+</style>
+<body>
+<div class="formBlock">
+    <form action="">
+        Имя: <br>
+        <input class="formInput" type="text" id="name"><br>
+        Телефон: <br>
+        <input class="formInput" type="text" id="phone"><br>
+        E-mail: <br>
+        <input class="formInput" type="text" id="email"><br>
+        Текст: <br>
+        <input class="formInput" type="textarea">
+        <button class="btn">Отправить</button>
+    </form>
+</div>
+
+<script>
+'use strict';
+
+document.querySelector('.btn').addEventListener('click', function () {
+    let name = document.querySelector('#name');
+    console.log(name);
+    let phone = document.querySelector('#phone');
+    console.log(phone);
+    let email = document.querySelector('#email');
+    console.log(email);
+
+    let nameValidation = /[a-zа-яё]/ig;
+    let phoneValidation = /[0-9]/ig;
+    let emailValidation = /(^\w+(|(\.|\-)\w+))(?=@[a-z]{2,}\.[a-z]{2,4}\b)/i;
+    
+    function validation(userinput, data) {
+        let valid = data.test(userinput.value);
+        console.log(valid);
+        if (valid) {
+            return userinput.classList.toggle('green');
+        } else {
+            userinput.classList.toggle('error');
+        }
+    }
+
+    validation(name, nameValidation);
+    validation(phone, phoneValidation);
+    validation(email, emailValidation);
+
+});
+</script>
+</body>
+</html>
